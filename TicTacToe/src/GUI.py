@@ -1,11 +1,15 @@
 from tkinter import Tk
 import tkinter
 from Tracker import Tracker
+from User import User
+from Computer import Computer
 
 
 class Board:
     def __init__(self):
+        self.move_value = " "
         self.tracker = Tracker()
+        self.user, self.computer = User(), Computer()
         self.root = window
         self.button_frame = tkinter.Frame(self.root)
         self.button_frame.pack(anchor=tkinter.CENTER, pady=50)
@@ -33,9 +37,19 @@ class Board:
     def button_after_click_command(self, button):
         keys = [key for key, val in self.buttons.items() if val == button]
         print(keys)
-        self.tracker.game_board[keys[0]] = 'X'
+        self.checkWhoseMove()
+        self.tracker.game_board[keys[0]] = self.move_value
         self.buttons[keys[0]].config(text=self.tracker.game_board[keys[0]])
         print(self.tracker.game_board)
+
+    def checkWhoseMove(self):
+        if self.tracker.whose_turn == "C":
+            self.move_value = Computer().move
+            print(self.move_value)
+            self.tracker.whose_turn = 'U'
+        elif self.tracker.whose_turn == "U":
+            self.move_value = User().move
+            self.tracker.whose_turn = "C"
 
 
 window = Tk()
