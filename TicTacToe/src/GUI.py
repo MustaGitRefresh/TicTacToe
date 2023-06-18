@@ -38,19 +38,20 @@ class Board:
     def button_after_click_command(self, button):
         keys = [key for key, val in self.buttons.items() if val == button]
         key = keys[0]
-        self.checkWhoseMove(key)
+        self.checkWhoseMove()
         self.tracker.game_board[key] = self.move_value
         self.buttons[key].config(text=self.tracker.game_board[key])
         print(self.tracker.game_board)
+        if self.move_value == self.user.move:
+            self.user.append_user_move(key, self.tracker.game_board)
 
-    def checkWhoseMove(self, move_position):
+    def checkWhoseMove(self):
         if self.tracker.whose_turn == "C":
             self.move_value = Computer().move
             self.tracker.whose_turn = 'U'
         elif self.tracker.whose_turn == "U":
             self.move_value = User().move
             self.tracker.whose_turn = "C"
-            self.user.append_user_move(move_position)
 
 
 window = Tk()
