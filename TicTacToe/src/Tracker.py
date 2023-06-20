@@ -37,5 +37,5 @@ class Tracker:
 
 if __name__ == '__main__':
     tracker = Tracker()
-    print(tracker.game_board)
-    print(tracker.game_patterns)
+    print(tracker.game_board)  # Print the initial game board state
+    print(tracker.game_patterns)  # Print the predefined game patterns
