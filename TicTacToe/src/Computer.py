@@ -23,7 +23,7 @@ class Computer:
                 game_board_copy[selected_move] = self.move
 
                 # Update the GUI button text with the computer's move
-                buttons[selected_move].config(text=self.move)
+                buttons[selected_move].config(text=self.move, state='disabled')
 
                 # Update the game board and user's move list
                 game_board = game_board_copy
