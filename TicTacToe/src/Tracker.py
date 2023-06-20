@@ -6,7 +6,7 @@ class Tracker:
     """
 
     def __init__(self):
-        self._whose_turn = "C"  # Variable to track whose turn it is ('C' for computer)
+        self._whose_turn = "U"  # Variable to track whose turn it is ('C' for computer)
         self.game_board = {  # Dictionary to represent the game board with empty squares
             key: "" for key in range(1, 10)
         }

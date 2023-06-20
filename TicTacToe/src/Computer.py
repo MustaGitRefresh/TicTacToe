@@ -7,8 +7,8 @@ class Computer:
         self.move = "X"  # Set the move for the computer as 'X'
         self.tracker = Tracker()  # created a instance of Tracker class
 
-    def computer_play(self, buttons, game_board):
-        if self.tracker.whose_turn == "C":
+    def computer_play(self, buttons, game_board, whose_turn):
+        if whose_turn == "C":
             game_board_copy = game_board.copy()  # Make a copy of the game board
 
             # Create a list of available moves by filtering out non-empty squares
@@ -27,3 +27,5 @@ class Computer:
 
                 # Update the game board and user's move list
                 game_board = game_board_copy
+        else:
+            return 0

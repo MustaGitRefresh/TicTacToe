@@ -51,12 +51,12 @@ class Board:
     def checkWhoseMove(self):
         if self.tracker.whose_turn == "C":
             self.move_value = self.computer.move  # Set the move value to the computer's move
-            self.computer.computer_play(self.buttons, self.tracker.game_board)
             print(f"whose move {self.tracker.game_board}")
             self.tracker.whose_turn = 'U'  # Update the tracker to indicate user's turn
         elif self.tracker.whose_turn == "U":
             self.move_value = User().move  # Set the move value to the user's move
             self.tracker.whose_turn = "C"  # Update the tracker to indicate computer's turn
+        self.computer.computer_play(self.buttons, self.tracker.game_board, self.tracker.whose_turn)
 
 
 window = Tk()
