@@ -8,7 +8,7 @@ class Computer:
         self.tracker = Tracker()  # created a instance of Tracker class
 
     def computer_play(self, buttons, game_board, whose_turn):
-        if whose_turn == "C":
+        if whose_turn == "U":
             game_board_copy = game_board.copy()  # Make a copy of the game board
 
             # Create a list of available moves by filtering out non-empty squares
@@ -24,8 +24,6 @@ class Computer:
 
                 # Update the GUI button text with the computer's move
                 buttons[selected_move].config(text=self.move, state='disabled')
-
-                # Update the game board and user's move list
-                game_board = game_board_copy
+                return game_board_copy
         else:
             return 0
